@@ -21,7 +21,7 @@ function buildMetadata(sample) {
 function buildCharts(newSample) {
 
     barChart(newSample)
-    gaugeChart(newSample)
+    //gaugeChart(newSample)
    bubbleChart(newSample)
 }
 
@@ -50,6 +50,45 @@ function buildCharts(newSample) {
       Plotly.newPlot("bar",data);
     });
   };
+
+  //Build Bubble chart:
+  function bubbleChart(Sample){
+    d3.json("samples.json").then((data) => {
+      var samples= data.samples;
+      var resultArray = samples.filter(sampleObj => sampleObj.id ==Sample);
+      var result = resultArray[0];
+      var X_axis = result.otu_ids;
+      var Y_axis = result.sample_values;
+      var label = result.otu_labels;
+      //plot bubble chart:
+      var tarce1 = {
+
+        x:X_axis,
+        y: Y_axis,
+        text: label,
+        mode: 'markers',
+        marker: {
+          color: X_axis,
+          color: ['rgb(93, 164, 214)', 'rgb(255, 144, 14)',  'rgb(44, 160, 101)', 'rgb(255, 65, 54)'],
+          opacity: [1, 0.8, 0.6, 0.4],
+          size: [40, 60, 80, 100],
+          size: Y_axis 
+        }
+        
+      };
+
+      var data =[tarce1]
+  
+      var layout = {
+        title: "Belly Button  acterial species",
+        showlegend: false,
+        xaxis: { title: "OTU ID"},
+        yaxis: { title: "Sample Values"}
+      };
+      
+      Plotly.newPlot("bubble",data, layout);
+    });
+  }  
 
 
 
