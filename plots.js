@@ -17,3 +17,26 @@ function buildMetadata(sample) {
     PANEL.append("h6").text(`wfred:${result.wfreq}`)
     });
   }
+//Pqge initialize:
+function init() {
+    var selector = d3.select("#selDataset");
+    d3.json("samples.json").then((data) => {
+    console.log(data);
+    var sampleNames = data.names;
+    sampleNames.forEach((sample) => {
+        selector
+        .append("option")
+        .text(sample)
+        .property("value", sample);
+    });
+    const firstSample=sampleNames[0]
+    buildCharts(firstSample);
+    buildMetadata(firstSample)
+})}
+
+function optionChanged(newSample) {
+  buildMetadata(newSample);
+  buildCharts(newSample);
+}
+
+init();
