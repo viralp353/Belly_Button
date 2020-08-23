@@ -21,7 +21,7 @@ function buildMetadata(sample) {
 function buildCharts(newSample) {
 
     barChart(newSample)
-    //gaugeChart(newSample)
+    gaugeChart(newSample)
    bubbleChart(newSample)
 }
 
@@ -90,7 +90,41 @@ function buildCharts(newSample) {
     });
   }  
 
-
+ // Build gauge chart:
+ function gaugeChart(Sample){
+  d3.json("samples.json").then((data) => {
+    var samples= data.metadata;
+    var resultArray = samples.filter(sampleObj => sampleObj.id == Sample);
+    var result = resultArray[0];
+    //plot gauge chart:
+    var trace2 = [
+      {
+        domain: { x: [0, 1], y: [0, 1] },
+        value: result.wfreq,
+        title: "Belly Button Washing Scrubs per Week",
+        type: 'indicator',
+        mode: 'gauge+number',
+        gauge: {
+          bar: {color: "heatmap"},
+          axis: {range: [0,9]},
+          steps: [
+            {range: [0,2], color: "rgb(20, 20, 20)"},
+            {range: [2,4], color:"rgb(40, 40, 40)"},
+            {range: [4,6], color: "rgb(80, 80, 80)"},
+            {range: [6,8], color: "rgb(120, 120, 120)"},
+            {range: [8,9], color: "rgb(140, 140, 140)"}  
+          ]
+          }
+      }
+    ]; 
+    var data2 = [trace2]
+    var layout = { 
+      width: 600, height: 450, margin: { t: 0, b: 0 } 
+    };
+  
+    Plotly.newPlot('gauge',trace2, layout)
+  });
+}
 
 //Pqge initialize:
 function init() {
