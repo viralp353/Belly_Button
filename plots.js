@@ -18,24 +18,41 @@ function buildMetadata(sample) {
     });
   }
 
-  function buildCharts(newSample) {
+function buildCharts(newSample) {
 
     barChart(newSample)
     gaugeChart(newSample)
-    bubbleChart(newSample)
+   bubbleChart(newSample)
 }
 
-// Build bar chart:
-function barChart(sample){
+   // Build bar chart:
+   function barChart(sample){
     d3.json("samples.json").then((data) => {
       var samples= data.samples;
       var resultArray = samples.filter(sampleObj => sampleObj.id == sample);
       var result = resultArray[0];
       var x_axis =result.sample_values.slice(0,10).reverse();
       var y_axis=result.otu_ids.slice(0,10).map(otuID=> "OTU " + otuID.toString()).reverse();
-
-
+      //Plotting bar chart"
+      var trace = {
+        x: x_axis,
+        y: y_axis,
+        text: result.otu_labels.reverse(),
+        type: 'bar',
+        orientation: 'h',
+        marker: {
+            color: 'rgba(255,153,51,0.6)',
+            width: 1
+        }
+      };
+      var data = [trace]
       
+      Plotly.newPlot("bar",data);
+    });
+  };
+
+
+
 //Pqge initialize:
 function init() {
     var selector = d3.select("#selDataset");
