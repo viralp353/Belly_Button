@@ -80,7 +80,7 @@ function buildCharts(newSample) {
       var data =[tarce1]
   
       var layout = {
-        title: "Belly Button  acterial species",
+        title: "Belly Button  Bacterial species",
         showlegend: false,
         xaxis: { title: "OTU ID"},
         yaxis: { title: "Sample Values"}
