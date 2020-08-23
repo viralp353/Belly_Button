@@ -40,11 +40,19 @@
 
 
 
-![Screenshot (87)](https://user-images.githubusercontent.com/65969608/90968499-60f1ea80-e4b2-11ea-9d18-50bd5fd0ce40.png)
+
+![Screenshot (88)](https://user-images.githubusercontent.com/65969608/90983194-e963a000-e531-11ea-9f0b-52a754f369e7.png)
+
+
+
 
 
 
 ## A link to the deployed page:
+
+
+
+https://viralp353.github.io/Belly_Button/
 
 
 
