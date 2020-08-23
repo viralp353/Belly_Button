@@ -17,6 +17,13 @@ function buildMetadata(sample) {
     PANEL.append("h6").text(`wfred:${result.wfreq}`)
     });
   }
+
+  function buildCharts(newSample) {
+
+    barChart(newSample)
+    gaugeChart(newSample)
+    bubbleChart(newSample)
+}
 //Pqge initialize:
 function init() {
     var selector = d3.select("#selDataset");
