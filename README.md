@@ -5,7 +5,7 @@
 ## Background:
  
  
- Website is a partially completed module .For challenge,need  complete panel with  demographic information and now needs to visualize the bacterial data for each volunteer. Specifically, Anybody should be able to identify the top 10 bacterial species in their belly buttons. That way, if Improbable Beef identifies a species as a candidate to manufacture synthetic beef.
+ Website is a partially completed in the module .For challenge,need  complete panel with  demographic information and  needs to visualize the bacterial data for each volunteer. Specifically, Anybody should be able to identify the top 10 bacterial species in their belly button.
 
 ##  Objectives:
 
