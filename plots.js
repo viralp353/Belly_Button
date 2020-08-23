@@ -24,6 +24,18 @@ function buildMetadata(sample) {
     gaugeChart(newSample)
     bubbleChart(newSample)
 }
+
+// Build bar chart:
+function barChart(sample){
+    d3.json("samples.json").then((data) => {
+      var samples= data.samples;
+      var resultArray = samples.filter(sampleObj => sampleObj.id == sample);
+      var result = resultArray[0];
+      var x_axis =result.sample_values.slice(0,10).reverse();
+      var y_axis=result.otu_ids.slice(0,10).map(otuID=> "OTU " + otuID.toString()).reverse();
+
+
+      
 //Pqge initialize:
 function init() {
     var selector = d3.select("#selDataset");
